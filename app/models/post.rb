@@ -10,9 +10,12 @@ def get_uniq_commentors
 end
 
 def categories_attributes=(categories_attributes)
+  
   categories_attributes.values.each do |categories_attribute|
+    if !categories_attribute["name"].empty?
     category = Category.find_or_create_by(categories_attribute)
     self.categories << category
+    end
   end
 end
 
